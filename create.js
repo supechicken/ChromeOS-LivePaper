@@ -15,10 +15,10 @@ videoPlayer.onplay = () => {
   chrome.runtime.sendMessage({message: 'stopLiveWallpaper'});
 
   const updateCanvas = () => {
+    if (!window.stopRender) videoPlayer.requestVideoFrameCallback(updateCanvas);
     statusText.innerText = `Extracting frames from video, please wait.. (${Math.round(videoPlayer.currentTime)}/${videoDuration})`
     canvasContext.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
     extractedFrames.push(canvas.toDataURL('image/jpeg'));
-    if (!window.stopRender) requestAnimationFrame(updateCanvas);
   };
 
   updateCanvas();

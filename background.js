@@ -83,12 +83,12 @@ async function main() {
       currentFrame = 0;
     }
 
-    if (await checkFocus() /*|| await anyMax()*/ || !liveWallpaperRunning) {
+    if (await checkFocus() || await anyMax() || !liveWallpaperRunning) {
       setTimeout(setWallpaper, 1000);
     } else {
       console.log('Current frame: ', currentFrame);
       const frame = await fetch(frames[currentFrame++]).then(response => response.arrayBuffer());
-      chrome.wallpaper.setWallpaper({ data: frame, filename: 'livewallpaper', layout: 'CENTER_CROPPED' }, () => setWallpaper());
+      chrome.wallpaper.setWallpaper({ data: frame, filename: 'livewallpaper', layout: 'CENTER_CROPPED' }, setWallpaper);
     }
   }
 
