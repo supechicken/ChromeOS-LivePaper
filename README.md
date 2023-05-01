@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/icon.svg" height="256" alt="logo" />
+  <img src="/icon.svg" height="200" alt="logo" />
 </p>
 <h1 align="center">ChromeOS LivePaper</h1>
 
