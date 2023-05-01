@@ -42,7 +42,7 @@ videoPlayer.onplay = () => {
     await chrome.storage.local.set({ frames: extractedFrames });
     await chrome.runtime.sendMessage({ message: 'restartEngine' });
 
-    alert(`Wallpaper set successfully!\n\nHints: Check settings (inside browser popup) if live wallpaper does not work\n\nExtracted ${extractedFrames.length} frames.`);
+    alert(`Wallpaper set successfully!\n\nHint: Check settings (inside browser popup) if live wallpaper does not work\n\nExtracted ${extractedFrames.length} frames.`);
   };
 }
 
