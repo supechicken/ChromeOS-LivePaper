@@ -1,4 +1,5 @@
 // create.js: video frame extracter
+'use strict';
 const videoUpload     = document.getElementById('videoUpload'),
       videoPlayer     = document.getElementById('videoPlayer'),
       canvas          = document.getElementById('render'),
@@ -30,9 +31,12 @@ videoPlayer.onplay = () => {
 
   videoPlayer.onpause = async () => {
     window.stopRender = true;
+    console.log('[debug]:', `${extractedFrames.length} frames extracted`);
+
     await chrome.storage.local.set({frames: extractedFrames});
     await chrome.runtime.sendMessage({message: 'restartEngine'});
-    alert(`Done. (${extractedFrames.length} frames extracted)`)
+
+    alert('Wallpaper set successfully!')
   };
 }
 

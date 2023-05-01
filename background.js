@@ -30,7 +30,7 @@ chrome.runtime.onInstalled.addListener(details => {
 });
 
 chrome.runtime.onMessage.addListener(async (request, _, responseTo) => {
-  console.log('Message received: ', request.message);
+  console.log('[debug]', 'message received: ', request.message);
 
   switch (request.message) {
     case 'startLiveWallpaper':
@@ -41,7 +41,7 @@ chrome.runtime.onMessage.addListener(async (request, _, responseTo) => {
       break;
     case 'restartEngine':
       if (!errorExit) {
-        console.log('stop engine')
+        console.log('[debug]', 'stop engine')
         stopFlag = true;
         await new Promise((resolve, _) => {
           const interval = setInterval(() => {
@@ -54,7 +54,7 @@ chrome.runtime.onMessage.addListener(async (request, _, responseTo) => {
       }
 
       liveWallpaperRunning = true;
-      console.log('start engine')
+      console.log('[debug]', 'start engine')
       main();
       break;
     case 'getStatus':
@@ -68,7 +68,7 @@ async function main() {
   const storage = await chrome.storage.local.get('frames');
 
   if (!storage.frames) {
-    console.log('note: empty local storage! (import a video in create.html?)');
+    console.log('[error]', 'empty local storage! (import a video in create.html?)');
     errorExit = true;
     return;
   }
@@ -86,7 +86,7 @@ async function main() {
     if (await checkFocus() || await anyMax() || !liveWallpaperRunning) {
       setTimeout(setWallpaper, 1000);
     } else {
-      console.log('Current frame: ', currentFrame);
+      console.log('[debug]', 'showing frame', currentFrame);
       const frame = await fetch(frames[currentFrame++]).then(response => response.arrayBuffer());
       chrome.wallpaper.setWallpaper({ data: frame, filename: 'livewallpaper', layout: 'CENTER_CROPPED' }, setWallpaper);
     }
