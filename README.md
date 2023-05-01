@@ -40,14 +40,14 @@ This extension uses `chrome.wallpaper.setWallpaper` to change the wallpaper in C
 As a workaround, this extension split the video (live wallpaper) into serval frames and feed them to `chrome.wallpaper.setWallpaper` one by one to make the wallpaper "move"
 
 ## FAQ
-- Q: Why it doesn't work?
-- A: Check the settings on browser popup
-
-- Q: It is laggy!
-- A: Try reducing the resolution in the wallpaper settings page (you will need to reset the live wallpaper in `Browser popup > Set a new wallpaper` for this).
-
-- Q: How to set a new live wallpaper?
-- A: `Browser popup > Set a new wallpaper`
+Q: Why it doesn't work?
+A: Check the settings on browser popup
+---
+Q: It is laggy!
+A: Try reducing the resolution in the wallpaper settings page (you will need to reset the live wallpaper in `Browser popup > Set a new wallpaper` for this).
+---
+Q: How to set a new live wallpaper?
+A: `Browser popup > Set a new wallpaper`
 
 ## Known issues
 - Poor performance (due to the way how this extension works)
