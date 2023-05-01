@@ -42,10 +42,14 @@ As a workaround, this extension split the video (live wallpaper) into serval fra
 ## FAQ
 Q: Why it doesn't work?
 A: Check the settings on browser popup
+
 ---
+
 Q: It is laggy!
 A: Try reducing the resolution in the wallpaper settings page (you will need to reset the live wallpaper in `Browser popup > Set a new wallpaper` for this).
+
 ---
+
 Q: How to set a new live wallpaper?
 A: `Browser popup > Set a new wallpaper`
 
