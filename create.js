@@ -17,14 +17,8 @@ videoPlayer.onplay = () => {
   const updateCanvas = () => {
     statusText.innerText = `Extracting frames from video, please wait.. (${Math.round(videoPlayer.currentTime)}/${videoDuration})`
     canvasContext.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
-    const base64 = canvas.toDataURL('image/jpeg');
-
-    fetch(base64).then(response => response.arrayBuffer()).then(arrayBuffer => {
-      chrome.wallpaper.setWallpaper({data: arrayBuffer, filename: 'livewallpaper', layout: 'CENTER_CROPPED'}, () => {
-        extractedFrames.push(base64);
-        if (!window.stopRender) requestAnimationFrame(updateCanvas);
-      });
-    });
+    extractedFrames.push(canvas.toDataURL('image/jpeg'));
+    if (!window.stopRender) requestAnimationFrame(updateCanvas);
   };
 
   updateCanvas();

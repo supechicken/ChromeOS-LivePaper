@@ -21,7 +21,7 @@ So I decided to make an alternative for it.
 
 ## Installation
 
-- Download [archive](https://github.com/supechicken/ChromeOS-LivePaper/archive/refs/tags/v1.0.zip) of this repository and unzip it
+- Download [archive](https://github.com/supechicken/ChromeOS-LivePaper/archive/refs/heads/main.zip) of this repository and unzip it
 - Unpack the zip file by:
   - Double click the zip file in the file manager. The zip file will show contents in what looks like a flash drive
   - Drag the folder within the zip file into the Downloads folder
