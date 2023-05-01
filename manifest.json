@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "ChromeOS LivePaper",
+  "version": "1.0",
+  "description": "Live wallpaper for Chrome OS",
+  "author": "supechicken666@gmail.com",
+  "icons": {
+    "512": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "ChromeOS LivePaper",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["offscreen", "wallpaper", "storage", "unlimitedStorage", "tabs"]
+}

@@ -1,0 +1,25 @@
+<!-- create.html: video import page -->
+<html>
+  <head>
+    <title>ChromeOS LivePaper</title>
+    <link rel="favicon" href="icon.svg" />
+    <link rel="stylesheet" href="stylesheet.css"/>
+    <script src="create.js" defer></script>
+  </head>
+  <style>
+    body {
+      min-height: 2.5in;
+      min-width: 3.5in;
+    }
+
+    #videoPlayer, #render {
+      width: 50vw;
+    }
+  </style>
+  <body>
+    <p id="status"></p>
+    <video id="videoPlayer" style="display: none;" autoplay></video>
+    <canvas id="render"></canvas>
+    <input type="file" id="videoUpload" accept="video/*" />
+  </body>
+</html>
