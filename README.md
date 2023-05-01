@@ -37,7 +37,7 @@ So I decided to make an alternative for it.
 
 This extension uses `chrome.wallpaper.setWallpaper` to change the wallpaper in Chrome OS. However, it only works with images.
 
-As a workaround, it split the video (live wallpaper) into serval frames and feed them to `chrome.wallpaper.setWallpaper` one by one to make the wallpaper "move"
+As a workaround, this extension split the video (live wallpaper) into serval frames and feed them to `chrome.wallpaper.setWallpaper` one by one to make the wallpaper "move"
 
 ## Known issues
 - Poor performance (due to how this extension works)
