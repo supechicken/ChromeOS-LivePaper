@@ -2,8 +2,7 @@
   <img src="/icon.svg" height="200" alt="logo" />
 </p>
 <h1 align="center">ChromeOS LivePaper</h1>
-
-## A live wallpaper engine for Chrome OS
+<h2 align="center">A live wallpaper engine for Chrome OS</h2>
 
 ## Features
 - Set a live wallpaper for your Chromebook
