@@ -23,15 +23,15 @@ html, body {
   color: var(--txt-color);
 }
 
-a {
-  text-decoration: none;
-  text-align: center;
-  color: var(--txt-color);
-}
-
 body, .center, .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inline-center {
+  display: flex;
   align-items: center;
   justify-content: center;
 }

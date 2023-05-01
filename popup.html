@@ -8,16 +8,39 @@
   </head>
   <style>
     body {
-      margin-top: 10px;
-      height: fit-content;
-      width: 150px;
+      margin: 0 20px 0 20px;
+      height: 3.2in;
+      width: 2in;
     }
   </style>
   <body>
-    <label class="switch">
-      <input type="checkbox" id="enableSwitch">
-      <span class="slider round"></span>
-    </label>
-    <a href="/create.html">Set a new wallpaper</a>
+    <div class="inline-center">
+      <div style="margin-right: 10px;">
+        <label class="switch">
+          <input type="checkbox" id="enableSwitch">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <p>Enable live wallpaper</p>
+    </div>
+    <div class="inline-center">
+      <div style="margin-right: 10px;">
+        <label class="switch">
+          <input type="checkbox" id="windowMaxCheck">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <p>Stop live wallpaper when window maximized</p>
+    </div>
+    <div class="inline-center">
+      <div style="margin-right: 10px;">
+        <label class="switch">
+          <input type="checkbox" id="windowFocusCheck">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <p>Stop live wallpaper when window focused</p>
+    </div>
+    <button id="newPaper">Set a new wallpaper</button>
   </body>
 </html>

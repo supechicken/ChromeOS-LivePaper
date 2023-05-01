@@ -1,4 +1,9 @@
-button {
+a {
+  text-decoration: none;
+  text-align: center;
+}
+
+button, a {
   background-color: #2e2f35;
   color: rgb(138, 180, 248);
   font-weight: bold;

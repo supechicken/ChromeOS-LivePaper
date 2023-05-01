@@ -1,5 +1,6 @@
-// create.js: video frame extracter
+// change_wallpaper.js: video frame extracter
 'use strict';
+
 const videoUpload     = document.getElementById('videoUpload'),
       videoPlayer     = document.getElementById('videoPlayer'),
       canvas          = document.getElementById('render'),
@@ -9,34 +10,39 @@ const videoUpload     = document.getElementById('videoUpload'),
       resHeight       = document.getElementById('resHeight'),
       nextBtn         = document.getElementById('nextBtn'),
       options         = document.getElementById('options'),
+      startTime       = document.getElementById('startTime'),
+      endTime         = document.getElementById('endTime'),
       canvasContext   = canvas.getContext('2d'),
       extractedFrames = [];
 
 videoPlayer.onplay = () => {
-  const videoDuration = Math.round(videoPlayer.duration);
-  canvas.width        = resWidth.value;
-  canvas.height       = resHeight.value;
-  window.stopRender   = false;
+  const endTimeValue = endTime.value;
+  canvas.width       = resWidth.value;
+  canvas.height      = resHeight.value;
+  window.stopRender  = false;
 
   chrome.runtime.sendMessage({message: 'stopLiveWallpaper'});
 
   const updateCanvas = () => {
     if (!window.stopRender) videoPlayer.requestVideoFrameCallback(updateCanvas);
-    statusText.innerText = `Extracting frames from video, please wait.. (${Math.round(videoPlayer.currentTime)}/${videoDuration})`
+    if (videoPlayer.currentTime > endTime.value) videoPlayer.pause();
+
+    statusText.innerText = `Extracting frames from video... (${videoPlayer.currentTime.toFixed(1)}/${endTimeValue} seconds)`
     canvasContext.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
     extractedFrames.push(canvas.toDataURL('image/jpeg'));
   };
 
-  updateCanvas();
+  videoPlayer.requestVideoFrameCallback(updateCanvas);
 
   videoPlayer.onpause = async () => {
     window.stopRender = true;
-    console.log('[debug]:', `${extractedFrames.length} frames extracted`);
+    console.log('[debug]', `${extractedFrames.length} frames extracted`);
 
-    await chrome.storage.local.set({frames: extractedFrames});
-    await chrome.runtime.sendMessage({message: 'restartEngine'});
+    statusText.innerText = 'Saving results to storage...';
+    await chrome.storage.local.set({ frames: extractedFrames });
+    await chrome.runtime.sendMessage({ message: 'restartEngine' });
 
-    alert('Wallpaper set successfully!')
+    alert(`Wallpaper set successfully!\n\nHints: Check settings (inside browser popup) if live wallpaper does not work\n\nExtracted ${extractedFrames.length} frames.`);
   };
 }
 
@@ -47,6 +53,8 @@ videoUpload.onchange = () => {
     options.style.visibility = 'visible';
     resWidth.value           = videoPlayer.videoWidth;
     resHeight.value          = videoPlayer.videoHeight;
+    startTime.value          = 0;
+    endTime.value            = videoPlayer.duration.toFixed(1);
   }
 };
 

@@ -1,10 +1,10 @@
-<!-- create.html: video import page -->
+<!-- change_wallpaper.html: page for changing the wallpaper -->
 <html>
   <head>
     <title>ChromeOS LivePaper</title>
     <link rel="favicon" href="icon.svg" />
     <link rel="stylesheet" href="stylesheet.css"/>
-    <script src="create.js" defer></script>
+    <script src="change_wallpaper.js" defer></script>
   </head>
   <style>
     body {
@@ -25,7 +25,7 @@
     }
   </style>
   <body>
-    <h3 id="status"></h3>
+    <h2 id="status">Select a video for live wallpaper...</h2>
     <video id="videoPlayer" style="display: none;" muted></video>
     <canvas id="render"></canvas>
     <input type="file" id="videoUpload" accept="video/*" />
@@ -38,6 +38,10 @@
       <div class="inline">
         <p>Resolution (reduce this to prevent laggy): </p>
         <input id="resWidth" type="number"> x <input id="resHeight" type="number">
+      </div>
+      <div class="inline">
+        <p>Start/End time: </p>
+        From <input id="startTime" type="number"> second(s) to <input id="endTime" type="number"> second(s)
       </div>
       <button id="nextBtn">Next</button>
     </div>
