@@ -3,13 +3,18 @@ const videoUpload     = document.getElementById('videoUpload'),
       videoPlayer     = document.getElementById('videoPlayer'),
       canvas          = document.getElementById('render'),
       statusText      = document.getElementById('status'),
+      videoSpeed      = document.getElementById('videoSpeed'),
+      resWidth        = document.getElementById('resWidth'),
+      resHeight       = document.getElementById('resHeight'),
+      nextBtn         = document.getElementById('nextBtn'),
+      options         = document.getElementById('options'),
       canvasContext   = canvas.getContext('2d'),
       extractedFrames = [];
 
 videoPlayer.onplay = () => {
   const videoDuration = Math.round(videoPlayer.duration);
-  canvas.height       = videoPlayer.videoHeight;
-  canvas.width        = videoPlayer.videoWidth;
+  canvas.width        = resWidth.value;
+  canvas.height       = resHeight.value;
   window.stopRender   = false;
 
   chrome.runtime.sendMessage({message: 'stopLiveWallpaper'});
@@ -32,5 +37,19 @@ videoPlayer.onplay = () => {
 }
 
 videoUpload.onchange = () => {
-  videoPlayer.src = URL.createObjectURL(videoUpload.files[0]);
+  videoPlayer.src          = URL.createObjectURL(videoUpload.files[0]);
+  videoPlayer.onloadeddata = () => {
+    videoPlayer.playbackRate = parseInt(videoSpeed.value) / 100;
+    options.style.visibility = 'visible';
+    resWidth.value           = videoPlayer.videoWidth;
+    resHeight.value          = videoPlayer.videoHeight;
+  }
 };
+
+nextBtn.onclick = () => {
+  if (videoPlayer.src) {
+    videoPlayer.play();
+  } else {
+    alert('No video selected!');
+  }
+}

@@ -1,0 +1,24 @@
+button {
+  background-color: #2e2f35;
+  color: rgb(138, 180, 248);
+  font-weight: bold;
+  padding: 10px 20px;
+  display: inline-flex;
+  border-radius: 10px;
+  border: 1px solid rgb(95, 99, 104);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #35384a;
+}
+
+button.tone2 {
+  background-color: #1a73e8;
+  color: white;
+}
+
+button.tone2:hover {
+  opacity: 0.9;
+}

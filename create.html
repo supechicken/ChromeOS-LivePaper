@@ -12,14 +12,34 @@
       min-width: 3.5in;
     }
 
-    #videoPlayer, #render {
-      width: 50vw;
+    #render {
+      width: 80vw;
+      max-width: 6in;
+      padding: 5px;
+      border: 2px solid white;
+      border-radius: 10px;
+    }
+
+    input[type="number"] {
+      width: 50px;
     }
   </style>
   <body>
-    <p id="status"></p>
-    <video id="videoPlayer" style="display: none;" autoplay></video>
+    <h3 id="status"></h3>
+    <video id="videoPlayer" style="display: none;" muted></video>
     <canvas id="render"></canvas>
     <input type="file" id="videoUpload" accept="video/*" />
+    <div id="options" class="container" style="visibility: hidden;">
+      <h2>Options</h2>
+      <div class="inline">
+        <p>Payback speed (0%-100%): </p>
+        <input id="videoSpeed" type="number" value="100" min="0" max="100"><p> %</p>
+      </div>
+      <div class="inline">
+        <p>Resolution (reduce this if the result is laggy): </p>
+        <input id="resWidth" type="number"> x <input id="resHeight" type="number">
+      </div>
+      <button id="nextBtn">Next</button>
+    </div>
   </body>
 </html>
