@@ -27,7 +27,7 @@ So I decided to make an alternative for it.
   - Drag the folder within the zip file into the Downloads folder
   - Optionally delete the zip file
 - Go to [chrome://extensions](chrome://extensions) and enable Developer Mode
-- Click "Pack Extension", click "Browse" under "Extension Root Directory", then click on the folder named `ChromeOS-AutoStart-main`, and click "Open"
+- Click "Pack Extension", click "Browse" under "Extension Root Directory", then click on the folder named `ChromeOS-LivePaper-main`, and click "Open"
 - Click "Pack Extension", then click "Okay"
 - Open the file manager, go to Downloads and drag the `.crx` file into the chrome://extensions window.
 - Click "Add Extension"
